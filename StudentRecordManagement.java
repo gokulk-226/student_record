@@ -20,7 +20,7 @@ public class StudentRecordManagement {
                 System.out.println("5. Exit");
                 System.out.print("Enter choice: ");
                 choice = sc.nextInt();
-                sc.nextLine(); // Consume newline
+                sc.nextLine();
 
                 switch (choice) {
                     case 1:
@@ -39,11 +39,11 @@ public class StudentRecordManagement {
                         System.out.println("Exiting... Thank you!");
                         break;
                     default:
-                        System.out.println("❌ Invalid choice! Please try again.");
+                        System.out.println("Invalid choice! Please try again.");
                 }
             } while (choice != 5);
         } catch (SQLException e) {
-            System.out.println("❌ Database connection error!");
+            System.out.println("Database connection error!");
             e.printStackTrace();
         }
     }
@@ -63,9 +63,9 @@ public class StudentRecordManagement {
             pstmt.setString(3, course);
             int rows = pstmt.executeUpdate();
             if (rows > 0) {
-                System.out.println("✅ Student successfully added.");
+                System.out.println("Student successfully added.");
             } else {
-                System.out.println("❌ Failed to add student.");
+                System.out.println("Failed to add student.");
             }
         }
     }
@@ -83,7 +83,7 @@ public class StudentRecordManagement {
                         rs.getString("email"), rs.getString("course"));
             }
             if (!hasData) {
-                System.out.println("⚠️ No student records found.");
+                System.out.println("No student records found.");
             }
         }
     }
@@ -91,7 +91,7 @@ public class StudentRecordManagement {
     static void updateStudent(Connection conn, Scanner sc) throws SQLException {
         System.out.print("Enter student ID to update: ");
         int id = sc.nextInt();
-        sc.nextLine(); // Consume newline
+        sc.nextLine();
         System.out.print("Enter new name: ");
         String name = sc.nextLine();
         System.out.print("Enter new email: ");
@@ -107,9 +107,9 @@ public class StudentRecordManagement {
             pstmt.setInt(4, id);
             int rows = pstmt.executeUpdate();
             if (rows > 0) {
-                System.out.println("✅ Student record successfully updated.");
+                System.out.println("Student record successfully updated.");
             } else {
-                System.out.println("❌ No matching student found to update.");
+                System.out.println("No matching student found to update.");
             }
         }
     }
@@ -123,9 +123,9 @@ public class StudentRecordManagement {
             pstmt.setInt(1, id);
             int rows = pstmt.executeUpdate();
             if (rows > 0) {
-                System.out.println("✅ Student record successfully deleted.");
+                System.out.println("Student record successfully deleted.");
             } else {
-                System.out.println("❌ No matching student found to delete.");
+                System.out.println("No matching student found to delete.");
             }
         }
     }
